@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-
 using ACME.OOP.Procurement.Domain.Model.Aggregate;
 using ACME.OOP.Procurement.Domain.Model.ValueObjects;
 using ACME.OOP.SCM.Domain.Model.Aggregate;
@@ -16,4 +15,4 @@ var purchaseOrder = new PurchaseOrder("PO12345", new SupplierId(supplier.Identif
     DateTime.Now, "USD");
 purchaseOrder.AddItem(ProductId.NewId(), 10, 15.00m);
 purchaseOrder.AddItem(ProductId.NewId(), 5, 25.00m);
-Console.WriteLine($"order total: {purchaseOrder.calculateOrderTotal()}");
+Console.WriteLine($"order total: {purchaseOrder.CalculateOrderTotal()}");
