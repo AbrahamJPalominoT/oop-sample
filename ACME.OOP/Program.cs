@@ -1,3 +1,19 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-Console.WriteLine("Hello, World!");
+
+using ACME.OOP.Procurement.Domain.Model.Aggregate;
+using ACME.OOP.Procurement.Domain.Model.ValueObjects;
+using ACME.OOP.SCM.Domain.Model.Aggregate;
+using ACME.OOP.SCM.Domain.Model.ValueObjects;
+using ACME.OOP.Shared.Domain.Model.ValueObjects;
+
+var supplierAddress = new Address(street: "Main St", number: "1213", city: "Anytown", stateOrRegion: "CA",
+    postalCode: "12345", country: "USA");
+    
+var supplier = new Supplier("SUP001", "Acme Supplies", supplierAddress);
+
+var purchaseOrder = new PurchaseOrder("PO12345", new SupplierId(supplier.Identifier),
+    DateTime.Now, "USD");
+purchaseOrder.AddItem(ProductId.NewId(), 10, 15.00m);
+purchaseOrder.AddItem(ProductId.NewId(), 5, 25.00m);
+Console.WriteLine($"order total: {purchaseOrder.calculateOrderTotal()}");
